@@ -1,11 +1,200 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import projects from "../data/projects.json";
 ---
 
 <Layout>
-	<Welcome />
+	<h1>Open source experiments</h1>
+	<p class="subtitle">
+		Simple, LLM focused experiments to keep following the thread.
+	</p>
+
+	<div class="section-label">Projects</div>
+	{projects.map((p) => (
+		<a
+			href={p.repo}
+			target="_blank"
+			class:list={["project-card", p.card]}
+			style="margin-top: 12px"
+		>
+			<div class="project-name">
+				{p.name}
+				<span class:list={["label", p.status === "Archived" ? "label-archived" : "label-wip"]}>
+					{p.status}
+				</span>
+			</div>
+			<div class="project-desc">
+				{p.description}
+			</div>
+			<div class="tags">
+				{p.tags.map((t) => (
+					<span class="tag">{t}</span>
+				))}
+			</div>
+		</a>
+	))}
+
+	<section>
+		<div class="section-label">Following curiosity</div>
+		<div class="philosophy">
+			<p>
+				Most things start as a question — something that felt harder
+				than it should be, or an idea worth exploring. There's no
+				grand plan, just a tight loop between thinking and building.
+			</p>
+			<p>
+				The work stays small and close to the problem. Experiments
+				get shipped, some stick around, some get archived. Either
+				way, something is learned.
+			</p>
+			<p>The only real goal — keep following the thread.</p>
+		</div>
+	</section>
 </Layout>
+
+<style>
+
+	h1 {
+		font-size: 28px;
+		font-weight: 500;
+		margin-bottom: 8px;
+		letter-spacing: -0.02em;
+	}
+
+	.subtitle {
+		font-size: 15px;
+		color: #666;
+		font-weight: 300;
+		margin-bottom: 56px;
+		line-height: 1.6;
+	}
+
+	.section-label {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 11px;
+		color: #999;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+	}
+
+	.project-card {
+		border: 1px solid #e5e5e5;
+		border-radius: 8px;
+		padding: 28px 32px;
+		text-decoration: none;
+		color: inherit;
+		display: block;
+		transition: border-color 0.2s;
+	}
+
+	.project-card:hover {
+		border-color: #111;
+	}
+
+	.project-card-le:hover {
+		color: white;
+		border-color: #111;
+		background: url("projects/le-bg.png") no-repeat center center;
+		background-size: cover;
+	}
+
+	.project-card-lk:hover {
+		color: white;
+		border-color: #111;
+		background: url("projects/lk-bg.png") no-repeat center center;
+		background-size: cover;
+	}
+
+	.project-name {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 18px;
+		font-weight: 500;
+		color: inherit;
+		margin-bottom: 8px;
+	}
+
+	.project-desc {
+		font-size: 14px;
+		color: #666;
+		font-weight: 300;
+		line-height: 1.6;
+		margin-bottom: 20px;
+	}
+
+	.project-card:hover > .project-desc {
+		color: inherit;
+	}
+
+	.tags {
+		display: flex;
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+
+	.tag {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 11px;
+		color: #555;
+		background: #f4f4f4;
+		padding: 4px 10px;
+		border-radius: 4px;
+	}
+
+	.label {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 11px;
+		font-weight: 500;
+		padding: 3px 8px;
+		border-radius: 4px;
+		display: inline-block;
+	}
+	.label-yellow {
+		color: #92640a;
+		background: #fef3c7;
+	}
+	.label-gray {
+		color: #555;
+		background: #e5e7eb;
+	}
+
+	.label {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 11px;
+		font-weight: 500;
+		padding: 2px 8px;
+		border-radius: 4px;
+		vertical-align: middle;
+		margin-left: 6px;
+	}
+	.label-archived {
+		color: #92400e;
+		background: #fef3c7;
+	}
+	.label-wip {
+		color: #1e40af;
+		background: #dbeafe;
+	}
+
+	/* Section */
+	section {
+		margin-top: 56px;
+	}
+
+	section h2 {
+		font-size: 11px;
+		font-family: monospace;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--muted);
+		margin-bottom: 20px;
+	}
+
+	.philosophy p {
+		font-size: 15px;
+		color: #666;
+		font-weight: 300;
+		line-height: 1.6;
+		margin-bottom: 14px;
+	}
+</style>

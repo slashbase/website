@@ -1,0 +1,26 @@
+[
+  {
+    "name": "layerkit",
+    "status": "Experimental WIP",
+    "description": "Simple spec-first LLM driven execution engine that turns YAML tool specs into MCP servers.",
+    "tags": ["Go", "Layerengine", "LLM", "MIT"],
+    "card": "project-card-lk",
+    "repo": "https://github.com/slashbase/layerkit"
+  },
+  {
+    "name": "layerengine",
+    "status": "Experimental WIP",
+    "description": "Simple LLM generated lua code running engine lib written in Golang.",
+    "tags": ["Go", "Lua", "LLM", "MIT"],
+    "card": "project-card-le",
+    "repo": "https://github.com/slashbase/layerengine"
+  },
+  {
+    "name": "slashbaseide",
+    "status": "Archived",
+    "description": "Modern database IDE for your dev & data workflows. Supports MySQL, PostgreSQL & MongoDB.",
+    "tags": ["Go", "TypeScript", "Database", "Apache-2.0"],
+    "card": "",
+    "repo": "https://github.com/slashbase/slashbaseide"
+  }
+]

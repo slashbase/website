@@ -1,23 +1,76 @@
+---
+const { title = "Slashbase" } = Astro.props;
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="logo.svg" type="image/svg+xml" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+		<link rel="preload" as="image" href="projects/le-bg.png" />
+        <link rel="preload" as="image" href="projects/lk-bg.png" />
 	</head>
 	<body>
+		<header>
+            <img src="logo.svg" alt="Slashbase" class="logo" />
+            <span class="wordmark">Slashbase</span>
+        </header>
 		<slot />
+		<footer>© 2026 Slashbase.com · <a href="https://github.com/slashbase">GitHub ↗</a></footer>
 	</body>
 </html>
 
 <style>
-	html,
 	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+		font-family: "Inter", sans-serif;
+		background: #fff;
+		color: #111;
+		padding: 64px 48px;
+		max-width: 720px;
+		margin: 0 auto;
+	}
+
+	header {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 64px;
+	}
+
+	.logo {
+		width: 36px;
+		height: 36px;
+		object-fit: contain;
+	}
+
+	.wordmark {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 20px;
+		font-weight: 500;
+		color: #111;
+	}
+
+	footer {
+		margin-top: 80px;
+		padding-top: 24px;
+		border-top: 1px solid #e5e5e5;
+		font-size: 13px;
+		color: #999;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	footer a {
+		color: #999;
+		text-decoration: none;
+	}
+	footer a:hover {
+		color: #111;
 	}
 </style>
