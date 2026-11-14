@@ -6,7 +6,7 @@ const { title = "Slashbase" } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="logo.svg" type="image/svg+xml" />
+		<link rel="icon" href="/logo.svg" type="image/svg+xml" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link
@@ -18,11 +18,13 @@ const { title = "Slashbase" } = Astro.props;
 	</head>
 	<body>
 		<header>
-            <img src="logo.svg" alt="Slashbase" class="logo" />
+			<a href="/">
+            	<img src="/logo.svg" alt="Slashbase" class="logo" />
+			</a>
             <span class="wordmark">Slashbase</span>
         </header>
 		<slot />
-		<footer>© 2026 Slashbase.com · <a href="https://github.com/slashbase">GitHub ↗</a></footer>
+		<footer>© 2026 Slashbase.com<div><a href="/">Home</a>&nbsp;&nbsp;&nbsp;<a href="/blog">Journal</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/slashbase">GitHub ↗</a></div></footer>
 	</body>
 </html>
 

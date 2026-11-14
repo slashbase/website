@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+<Layout>
+    <article class="post">
+        <a class="back" href="/blog">&larr; All posts</a>
+        <div class="header">
+            <h1>{post.data.title}</h1>
+            <div class="meta">
+                <span>{post.data.author}</span>
+                <span aria-hidden="true">·</span>
+                <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+            </div>
+        </div>
+        <div class="prose"><Content /></div>
+    </article>
+</Layout>
+
+<style>
+  .post { max-width: 720px; margin: 0 auto; padding: 1rem 1.5rem; }
+  .back { font-size: 0.9rem; color: var(--muted, #888); text-decoration: none; }
+  .back:hover { color: var(--accent, inherit); }
+  .post .header { margin: 1.5rem 0 2.5rem; }
+  .post h1 { font-size: 2.25rem; line-height: 1.2; margin: 0 0 0.5rem; }
+  .meta { display: flex; gap: 0.4rem; font-size: 0.85rem; color: var(--muted, #888); }
+
+  .prose { line-height: 1.75; }
+  .prose :global(h2) { margin: 2.5rem 0 1rem; font-size: 1.5rem; }
+  .prose :global(h3) { margin: 2rem 0 0.75rem; font-size: 1.2rem; }
+  .prose :global(a) { color: var(--accent, inherit); }
+  .prose :global(img) { max-width: 100%; border-radius: 8px; }
+  .prose :global(blockquote) { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--border, #444); color: var(--muted, #888); }
+  .prose :global(code) { background: var(--border, #2a2a2a); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
+  .prose :global(pre) { padding: 1rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border, #2a2a2a); }
+  .prose :global(pre code) { background: none; padding: 0; }
+</style>
