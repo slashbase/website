@@ -40,13 +40,33 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
   .post h1 { font-size: 2.25rem; line-height: 1.2; margin: 0 0 0.5rem; }
   .meta { display: flex; gap: 0.4rem; font-size: 0.85rem; color: var(--muted, #888); }
 
-  .prose { line-height: 1.75; }
-  .prose :global(h2) { margin: 2.5rem 0 1rem; font-size: 1.5rem; }
-  .prose :global(h3) { margin: 2rem 0 0.75rem; font-size: 1.2rem; }
-  .prose :global(a) { color: var(--accent, inherit); }
-  .prose :global(img) { max-width: 100%; border-radius: 8px; }
-  .prose :global(blockquote) { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--border, #444); color: var(--muted, #888); }
-  .prose :global(code) { background: var(--border, #2a2a2a); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
-  .prose :global(pre) { padding: 1rem; border-radius: 8px; overflow-x: auto; border: 1px solid var(--border, #2a2a2a); }
-  .prose :global(pre code) { background: none; padding: 0; }
+.prose { line-height: 1.75; }
+.prose :global(h2) { margin: 2.5rem 0 1rem; font-size: 1.5rem; }
+.prose :global(h3) { margin: 2rem 0 0.75rem; font-size: 1.2rem; }
+.prose :global(a) { color: var(--accent, inherit); }
+.prose :global(img) { max-width: 100%; border-radius: 8px; }
+.prose :global(blockquote) { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--border, #444); color: var(--muted, #888); }
+
+/* Inline code: light grey background, dark text */
+.prose :global(code) {
+  color: #1a1a1a;
+  background: #e2e2e2;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Code blocks: black background, light text */
+.prose :global(pre) {
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  background: #000;
+  border: 1px solid var(--border, #2a2a2a);
+}
+.prose :global(pre code) {
+  background: none;
+  color: #e6e6e6;
+  padding: 0;
+}
 </style>
