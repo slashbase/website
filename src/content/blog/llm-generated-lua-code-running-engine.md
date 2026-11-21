@@ -1,12 +1,12 @@
 
 ---
 title: "An LLM generated Lua code running engine in Go"
-description: "I built Layerengine, an open source Go library that turns a YAML flow spec into generated code."
+description: "I built Layerengine, an open source Go library that turns a YAML flow spec into LLM generated Lua code."
 pubDate: 2026-11-20
 author: Paras Waykole
 ---
 
-TLDR; I built Layerengine, an open source Go library that turns a YAML flow spec into generated code. An LLM writes one small Lua function per step, the library compiles it with gopher-lua, and runs it in a locked-down Lua state with a 60-second timeout, threading each step's named outputs into the next step's inputs.
+TLDR; I built Layerengine, an open source Go library that turns a YAML flow spec into LLM generated Lua code. An LLM writes one small Lua function per step, the library compiles it with gopher-lua, and runs it in a locked-down Lua state with a 60-second timeout, threading each step's named outputs into the next step's inputs.
 
 What I wanted was narrow on purpose: not a model that decides what to do next, but one that writes a single function against a contract somebody else already wrote down. A function has a signature, a signature can be checked before the code runs, and checked code can run in a box you can describe in a paragraph.
 

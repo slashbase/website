@@ -29,13 +29,23 @@ const { title = "Slashbase" } = Astro.props;
 </html>
 
 <style>
+	*,
+	*::before,
+	*::after {
+	box-sizing: border-box;
+	}
+
 	body {
-		font-family: "Inter", sans-serif;
-		background: #fff;
-		color: #111;
-		padding: 64px 48px;
-		max-width: 720px;
-		margin: 0 auto;
+	font-family: "Inter", sans-serif;
+	background: #fff;
+	color: #111;
+	max-width: 720px;
+	margin: 0 auto;
+	padding: clamp(24px, 6vw, 64px) clamp(16px, 5vw, 48px);
+	font-size: 1rem;
+	line-height: 1.6;
+	overflow-wrap: break-word;
+	-webkit-text-size-adjust: 100%;
 	}
 
 	header {

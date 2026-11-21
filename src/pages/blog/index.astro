@@ -31,10 +31,25 @@ const formatDate = (date: Date) =>
 </Layout>
 
 <style>
-  .blog { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem; }
+  .blog {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 1.5rem);
+    overflow-wrap: break-word;
+  }
   .blog h1 { font-size: 2.5rem; margin: 0 0 0.5rem; }
   .post-card {
-    display: block; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit;
+    display: block;
+    padding: clamp(1rem, 4vw, 1.25rem) clamp(1rem, 5vw, 1.5rem);
+    text-decoration: none;
+    color: inherit;
+    overflow-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .post-card:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
   }
   .posts { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
   .post-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
